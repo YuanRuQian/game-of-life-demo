@@ -1,6 +1,7 @@
 import React from 'react'
 import './App.css'
 import { Controller } from './components/Controller'
+import { Footer } from './components/Footer'
 import { GridBoard } from './components/GridBoard'
 import { Header } from './components/Header'
 import { useGrid } from './hooks/useGrid'
@@ -23,6 +24,7 @@ const App = () => {
         onShuffle={shuffleGrid}
       />
       <GridBoard states={grid} toggleCell={toggleCell} />
+      <Footer />
     </div>
   )
 }
