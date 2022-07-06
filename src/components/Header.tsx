@@ -1,7 +1,8 @@
-import { Backdrop, Box, Button } from '@mui/material'
-import React, { useState } from 'react'
+import { Backdrop, Box, Button, IconButton, Grid } from '@mui/material'
+import React, { CSSProperties, useState } from 'react'
 import { CrossEmojiCursorStyle, QuestionMarkEmojiCursorStyle } from '../utils/cursor'
 import { GameIntroduction } from './GameIntroduction'
+import GitHubIcon from '@mui/icons-material/GitHub'
 
 export const Header = () => {
   const [showIntroduction, setShowIntroduction] = useState<boolean>(false)
@@ -41,9 +42,32 @@ export const Header = () => {
     )
   }
 
+  const GitHubRepoLinkButton = () => {
+    const navigateToProjectGitHubRepo = () =>
+      window.open('https://github.com/YuanRuQian/game-of-life-demo', '_blank', 'noreferrer')
+
+    const buttonStyle: CSSProperties = {
+      position: 'absolute',
+      right: '1rem',
+      top: '1rem',
+    }
+
+    return (
+      <IconButton
+        color="inherit"
+        aria-label="link to the project's GitHub repo"
+        onClick={navigateToProjectGitHubRepo}
+        style={buttonStyle}
+      >
+        <GitHubIcon fontSize="large" />
+      </IconButton>
+    )
+  }
+
   return (
-    <Box sx={{ width: '100%' }}>
+    <Grid container justifyContent="center">
       <Introduction />
-    </Box>
+      <GitHubRepoLinkButton />
+    </Grid>
   )
 }
