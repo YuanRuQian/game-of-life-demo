@@ -1,26 +1,30 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react'
+import './App.css'
+import { Controller } from './components/Controller'
+import { GridBoard } from './components/GridBoard'
+import { Header } from './components/Header'
+import { useGrid } from './hooks/useGrid'
 
-function App() {
+const App = () => {
+  const { grid, toggleCell, resetGrid, isAutoRunning, beginAutoRun, stopAutoRun, shuffleGrid } =
+    useGrid({
+      size: 20,
+      filler: 'dead',
+    })
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Controller
+        onReset={resetGrid}
+        onAutoRun={beginAutoRun}
+        onStopAutoRun={stopAutoRun}
+        isAutoRunning={isAutoRunning}
+        onShuffle={shuffleGrid}
+      />
+      <GridBoard states={grid} toggleCell={toggleCell} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

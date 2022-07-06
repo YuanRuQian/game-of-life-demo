@@ -28,7 +28,7 @@ export const useGrid = ({ size, filler }: GridCreatorPros) => {
     stopRunning()
     setIsAutoRunning(false)
   }
-  
+
   const resetGrid = () => {
     stopAutoRun()
     setGrid(initialGrid)
